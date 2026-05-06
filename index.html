@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -6,24 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-       <style> 
+ <style> 
         h1 {
         text-align: center;
         color: rgb(0, 0, 0);
         font-size: 50px;
         } 
     </style>
+    
+<style>
+        /* Estilo opcional para mostrar que a imagem é clicável */
+        .minha-imagem {
+            cursor: pointer;
+            width: 300px; /* Ajuste o tamanho aqui */
+            transition: transform 0.2s;
+        }
+        .minha-imagem:hover {
+            transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+        }
+    </style>
 </head> 
-<body> 
-   <audio controls>
-  <source src="capoeirashow-samba-de-roda-0e3b1b.mp3" type="audio/ogg">
-  <source src="capoeirashow-samba-de-roda-0e3b1b.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>  
+<body>
+   <audio id="musica" src="capoeirashow-samba-de-roda-0e3b1b.mp3"></audio>
+  
    <button class="mytestbtn">não clique</button>
-  <img src="img/91e9dc377c5ab0f2dfd1075486aecde2.gif" class="d-block mx-auto">   
+  <img src="img/91e9dc377c5ab0f2dfd1075486aecde2.gif" class="d-block mx-auto"
+     alt="Clique para tocar" 
+        class="minha-imagem" 
+        onclick="tocarMusica()">
+
   <h1>DIO SOI MESSIAS</h1>
-  <button type="reset">Reset</button>                                                                                                                                                                             
+  <p id="data"></p>
+  <button type="reset">Reset</button>  
+  <script>
+        function tocarMusica() {
+            var audio = document.getElementById("musica");
+            
+            // Verifica se está pausado para dar o play, ou vice-versa
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>                                                                                                                                                                           
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+  const d = new Date();
+  const segundo=d.getSeconds();
+  const hora=d.getHours();
+  const minuto=d.getMinutes();
+  const data=d.getDate();
+  const mes=d.getMonth()+1;
+  const ano=d.getFullYear();
+
+  document.getElementById("data").textContent = hora+":"+minuto+":"+segundo+"   date:    "+data+" / "+mes+" / "+ano;
+</script>
 </body>
 </html>
